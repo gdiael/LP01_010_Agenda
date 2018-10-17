@@ -11,7 +11,7 @@ Pessoa::~Pessoa()
 
 string Pessoa::getNome()
 {
-    return this->m_nome;
+    return str_toupper(this->m_nome);
 }
 
 void Pessoa::setNome(string valor)
@@ -49,12 +49,19 @@ ostream &operator<<(ostream &os, Pessoa &pess)
     // aqui serão usados manipuladores para formatar a saída
     // o nome da pessoa será ajustado a esquerda, e terá um espaçamento de 18
     // caracteres antes da idade
-    os << left << setw(18) << pess.m_nome;
+    os << left << setw(18) << pess.getNome();
     // a idade será posicionada em seguinda
     os << " | " << right << setw(3) << pess.m_idade << "anos";
     // a altura será formatada com duas casas decimais
     os << " [altura: " << setprecision(2) << fixed;
     // será ajustada a direita com espaçamento de 6 caracteres
-    os << right << setw(6) << pess.m_altura << "m]" << endl;
+    os << right << setw(5) << pess.m_altura << "m]" << endl;
     return os;
+}
+
+string str_toupper(string s)
+{
+    transform(s.begin(), s.end(), s.begin(),
+              [](unsigned char c) { return toupper(c); });
+    return s;
 }

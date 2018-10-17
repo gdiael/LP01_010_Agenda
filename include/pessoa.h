@@ -28,11 +28,6 @@ private:
     double m_altura;
 };
 
-string str_toupper(string s)
-{
-    transform(s.begin(), s.end(), s.begin(),
-              [](unsigned char c) { return toupper(c); });
-    return s;
-}
+string str_toupper(string s);
 
 #endif
